@@ -1,0 +1,107 @@
+import {
+    Home,
+    Addbooks,
+    Hotbooks,
+    PublicArticle,
+    Login,
+    Auth,
+    Info
+} from "../pages"
+export const layoutRouter=[
+    {
+        path:"/home",
+        component:Home,
+        icon:"user",
+        key:"/home",
+        name:"首页",
+        //权限校验
+        meta:{
+            auth:true
+        }
+    },
+    {
+        path:"/books",
+        icon:"user",
+        key:"/books",
+        name:"书籍管理",
+       children:[
+            {
+                path:"/books/hotbooks",
+                component:Hotbooks,
+                icon:"user",
+                key:"/books/hotbooks",
+                name:"热门书籍",
+                //权限校验
+                meta:{
+                    auth:true
+                }
+            },
+            {
+                path:"/books/addbooks",
+                component:Addbooks,
+                icon:"user",
+                key:"/books/addbooks",
+                name:"添加书籍",
+                //权限校验
+                meta:{
+                    auth:true
+                }
+            },
+            {
+                path:"/books/publicArticle",
+                component:PublicArticle,
+                icon:"user",
+                key:"/books/publicArticle",
+                name:"发布文章",
+                //权限校验
+                meta:{
+                    auth:true
+                }
+            }
+       ]
+    },
+    {
+        path:"/user",
+        key:"/user",
+        name:"首页",
+        children:[
+            {
+                path:"/user/auth",
+                component:Auth,
+                icon:"user",
+                key:"/user/auth",
+                name:"权限管理",
+                //权限校验
+                meta:{
+                    auth:true
+                }
+            },
+            {
+                path:"/user/info",
+                component:Info,
+                icon:"user",
+                key:"/user/info",
+                name:"个人信息",
+                //权限校验
+                meta:{
+                    auth:true
+                }
+            }
+        ]
+    },
+]
+
+export const nolayoutRouter=[
+    {
+        path:"/login",
+        component:Login,
+        key:"/login",
+        name:"登录",
+        meta:{
+            auth:false
+        }
+    }
+]
+
+export const baseConfig=layoutRouter.concat(nolayoutRouter)
+
